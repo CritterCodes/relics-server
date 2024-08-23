@@ -1,0 +1,44 @@
+{
+  "name": "btc",
+  "version": "1.0.0",
+  "description": "web3 playground",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CritterCodes/web3-playground.git"
+  },
+  "keywords": [
+    "web3",
+    "bitcoin",
+    "ethereum",
+    "algorand",
+    "solona",
+    "polygon"
+  ],
+  "author": "CritterCodes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CritterCodes/web3-playground/issues"
+  },
+  "homepage": "https://github.com/CritterCodes/web3-playground#readme",
+  "dependencies": {
+    "algosdk": "^2.8.0",
+    "axios": "^1.7.4",
+    "bip32": "^4.0.0",
+    "bip39": "^3.1.0",
+    "bitcoinjs-lib": "^6.1.6",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.8.0",
+    "tiny-secp256k1": "^2.2.3",
+    "tweetnacl": "^1.0.3",
+    "uuid": "^10.0.0"
+  }
+}
