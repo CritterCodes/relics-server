@@ -24,7 +24,7 @@ app.use('/api/v1/auth', authR);
 
 // TODO: Environment based configs
 const config = {
-    url: 'mongodb://localhost:27017/',
+    url: process.env.ATLAS_URL,
     database: '[efd]',
     minPoolSize: 3,
     maxPoolSize: 10,
