@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use(cors({
-    origin: "http://localhost:3000"
+    origin: "https://relics.engelfinedesign.com"
 }));
 
 app.use('/api/v1/algo', algoR);
