@@ -6,6 +6,7 @@ import relicR from './routes/relic.route.js';
 import collectorR from './routes/collectors.route.js';
 import { isAdmin } from './middleware/auth.middleware.js';
 import authR from './routes/auth.route.js';
+import dotenv from 'dotenv';
 
 const app = express();
 const port = 3001;
@@ -31,6 +32,7 @@ const config = {
 };
 
 db.init(config);
+dotenv.config();
 
 app.listen(port, () => {
    

@@ -1,6 +1,8 @@
-import AlgoM from "../models/algo.model.js";
 import algosdk from "algosdk";
 import algodClient from "../lib/algoClient.js";
+import RelicM from "../models/relic.model.js";
+import cid from 'cids';
+import multihash from 'multihashes';
 
 // Helper function to wait for transaction confirmation
 async function waitForConfirmation(txId) {
@@ -18,6 +20,34 @@ async function waitForConfirmation(txId) {
 }
 
 export default class AlgoCoor {
+    static async mintNFT(relicId, signedTxn) {
+        try {
+            // Fetch the relic from the database
+            const relic = await RelicM.getRelicById(relicId);
+
+            if (!relic) {
+                throw new Error('Relic not found');
+            }
+
+            // Convert the signed transaction back to Uint8Array
+            const signedTxnArray = new Uint8Array(Object.values(signedTxn));
+
+            // Send the transaction to the network
+            const txResponse = await algodClient.sendRawTransaction(signedTxnArray).do();
+
+            // Wait for confirmation
+            const confirmedRound = await waitForConfirmation(txResponse.txId);
+
+            // Update relic status in the database to mark as minted
+            await RelicM.updateRelicMintStatus(relicId, true, txResponse.txId);
+
+            return { txId: txResponse.txId, confirmedRound };
+        } catch (err) {
+            console.error('Error minting NFT:', err);
+            return { error: 'Failed to mint NFT', details: err };
+        }
+    }
+
     static createWallet = async () => {
         try {
             // Generate new Algorand account
@@ -96,5 +126,4 @@ export default class AlgoCoor {
             return { error: 'Failed to fetch NFTs', details: err };
         }
     }
-    
 }

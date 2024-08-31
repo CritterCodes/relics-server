@@ -45,7 +45,32 @@ export const getNFTs = async (req, res, next) => {
     }
 }
 
+export const mintNFT = async (req, res, next) => {
+    try {
+        const { relicId } = req.params;
 
-export const getBalance = async () =>{
+        const result = await AlgoCoor.mintNFT(relicId);
 
-}
+        if (result && !result.error) {
+            res.status(200).json(result);
+        } else {
+            res.status(400).json(result);
+        }
+    } catch (err) {
+        next(err);
+    }
+};
+
+export const getBalance = async (req, res, next) => {
+    try {
+        const balance = await AlgoCoor.getBalance(req.query.address);
+
+        if (balance) {
+            res.status(200).json({ balance });
+        } else {
+            res.status(404).json({ error: 'Address not found' });
+        }
+    } catch (err) {
+        next(err);
+    }
+};
