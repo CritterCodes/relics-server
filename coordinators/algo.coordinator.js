@@ -1,8 +1,6 @@
 import algosdk from "algosdk";
 import algodClient from "../lib/algoClient.js";
 import RelicM from "../models/relic.model.js";
-import cid from 'cids';
-import multihash from 'multihashes';
 
 // Helper function to wait for transaction confirmation
 async function waitForConfirmation(txId) {

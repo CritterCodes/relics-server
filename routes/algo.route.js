@@ -3,7 +3,7 @@ import {
     getBalance,
     sendAlgo,
     getNFTs,
-    mintNft
+    mintNFT
 } from '../controllers/algo.controller.js';
 
 const algoR = Router();
