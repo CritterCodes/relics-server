@@ -7,6 +7,7 @@ import collectorR from './routes/collectors.route.js';
 import { isAdmin } from './middleware/auth.middleware.js';
 import authR from './routes/auth.route.js';
 import dotenv from 'dotenv';
+import SubsRoute from './routes/subs.route.js';
 
 const app = express();
 const port = 3001;
@@ -22,6 +23,7 @@ app.use('/api/v1/algo', algoR);
 app.use('/api/v1/collectors', collectorR);
 app.use('/api/v1/relics', isAdmin, relicR);
 app.use('/api/v1/auth', authR);
+app.use('/api/v1/subs', SubsRoute);
 
 // TODO: Environment based configs
 const config = {
