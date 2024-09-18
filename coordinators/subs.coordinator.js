@@ -6,7 +6,10 @@ export default class SubsCoordinator {
     static addSub = async (sub) => {
         try {
             const newSub = new Sub(sub.email);
-            return await SubsModel.addSub(sub);
+            if (sub.walletAddress) {
+                newSub.updateSub({ address: sub.walletAddress });
+            }
+            return await SubsModel.addSub(newSub);
         } catch (error) {
             throw new Error(`Error adding sub. Error: ${error}`);
         };

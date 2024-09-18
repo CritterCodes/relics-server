@@ -1,9 +1,11 @@
 import { Router } from 'express';
 import SubsController from '../controllers/subs.controller.js'
 
-export default subsRoute = Router();
+const subsRouter = Router();
 
-subsRoute.post('/', SubsController.addSub);
-subsRoute.get('/', SubsController.getSubs);
-subsRoute.get('/:subID', SubsController.getSub);
-subsRoute.delete('/:subID', SubsController.deleteSub);
+subsRouter.post('/', SubsController.addSub);
+subsRouter.get('/', SubsController.getSubs);
+subsRouter.get('/:subID', SubsController.getSub);
+subsRouter.delete('/:subID', SubsController.deleteSub);
+
+export default subsRouter;

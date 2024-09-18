@@ -4,6 +4,7 @@ export default class Sub {
     constructor(email) {
         this.subID = uuidv4();
         this.email = email;
+        this.address = '';
     }
 
     updateSub(data) {

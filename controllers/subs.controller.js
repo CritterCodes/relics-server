@@ -3,7 +3,7 @@ import SubsCoordinator from '../coordinators/subs.coordinator.js';
 export default class SubsController {
     static addSub = async (req, res) => {
         try {
-            const result = await SubsCoordinator.addSub(req.body);
+            const result = await SubsCoordinator.addSub(req.body.email);
             if (result) {
                 res.status(201).send('Sub added');
             } else {
